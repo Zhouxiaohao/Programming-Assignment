@@ -15,17 +15,91 @@ enum { R_AL, R_CL, R_DL, R_BL, R_AH, R_CH, R_DH, R_BH };
  */
 
 typedef struct {
+/*	
 	struct {
 		uint32_t _32;
 		uint16_t _16;
 		uint8_t _8[2];
 	} gpr[8];
+*/
 
 	/* Do NOT change the order of the GPRs' definitions. */
-
+/*
 	uint32_t eax, ecx, edx, ebx, esp, ebp, esi, edi;
+*/
+
+	union {
+		struct {
+			union {
+				uint32_t _32;
+				uint16_t _16;
+				uint8_t _8[2];	
+			};
+		} gpr[8];
+
+		struct {
+			uint32_t eax, ecx, edx, ebx, esp, ebp, esi, edi;
+		};
+	};
 
 	swaddr_t eip;
+/*
+	union {
+		uint32_t eax;
+		uint16_t ax;
+		struct {
+			uint8_t al;
+			uint8_t ah;
+		};
+	};
+
+	union {
+		uint32_t ecx;
+		uint16_t cx;
+		struct {
+			uint8_t cl;
+			uint8_t ch;
+		};
+	};
+
+	union {
+		uint32_t edx;
+		uint16_t dx;
+		struct {
+			uint8_t dl;
+			uint8_t dh;
+		};
+	};
+
+	union {
+		uint32_t ebx;
+		uint16_t bx;
+		struct {
+			uint8_t bl;
+			uint8_t bh;
+		};
+	};
+
+	union {
+		uint32_t esp;
+		uint16_t sp;
+	};
+
+	union {
+			uint32_t ebp;
+			uint16_t bp;
+	};
+
+	union {
+			uint32_t esi;
+			uint16_t si;
+	};
+
+	union {
+			uint32_t edi;
+			uint16_t di;
+	};
+*/
 
 } CPU_state;
 
@@ -36,9 +110,16 @@ static inline int check_reg_index(int index) {
 	return index;
 }
 
+/*
 #define reg_l(index) (cpu.gpr[check_reg_index(index)]._32)
 #define reg_w(index) (cpu.gpr[check_reg_index(index)]._16)
 #define reg_b(index) (cpu.gpr[check_reg_index(index) & 0x3]._8[index >> 2])
+*/
+
+#define reg_l(index) (cpu.gpr[check_reg_index(index)]._32)
+#define reg_w(index) (cpu.gpr[check_reg_index(index)]._16)
+#define reg_b(index) (cpu.gpr[check_reg_index(index) & 0x3]._8[index >> 2])
+
 
 extern const char* regsl[];
 extern const char* regsw[];

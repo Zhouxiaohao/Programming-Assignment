@@ -42,6 +42,7 @@ static int cmd_help(char *args);
 /****************The begining*********************/
 static int cmd_si(char *args);
 static int cmd_info(char *args);
+static int cmd_x(char *args);
 /****************The Ending***********************/ 
 
 static struct {
@@ -52,8 +53,9 @@ static struct {
 	{ "help", "Display informations about all supported commands", cmd_help },
 	{ "c", "Continue the execution of the program", cmd_c },
 	{ "q", "Exit NEMU", cmd_q },
-	{ "si", "Sinle step debug", cmd_si},
-	{ "info", "Print program state information", cmd_info},
+	{ "si", "Sinle step debug", cmd_si },
+	{ "info", "Print program state information", cmd_info },
+	{ "x", "Scan memory", cmd_x },
 
 	/* TODO: Add more commands */
 
@@ -172,6 +174,29 @@ static int cmd_info(char *args) {
 	}
 	else {
 		/*Impossible*/
+	}
+
+	return 0;
+}
+
+static int cmd_x(char *args) {
+	if(args == NULL) {
+	
+	}
+	else {
+		char *arg_1 = strtok(NULL, " ");
+		char *arg_2 = strtok(NULL, " ");
+		if(arg_1 == NULL || arg_2 == NULL || !strtok(NULL, " ")) {
+		}
+
+		int n = string_to_uint(arg_1);
+		if(n < 0) {
+		}
+
+		uint32_t addr = 0;
+		sscanf(arg_2, "0x%x", &addr);
+
+		
 	}
 
 	return 0;

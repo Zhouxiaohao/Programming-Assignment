@@ -154,7 +154,7 @@ static int cmd_si(char *args) {
 
 static int cmd_info(char *args) {
 	if(args == NULL || !strtok(NULL, " ") || strcmp(args, "r") || strcmp(args, "w")) {
-		printf("Wrong command 'info' format\n");
+		printf("Wrong command 'info' format: info %s\n", args);
 		printf("Right command 'info' format: 'info r' or 'info w'\n");
 	}
 	else if(!strcmp(args, "r")) {

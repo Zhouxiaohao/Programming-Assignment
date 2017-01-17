@@ -159,6 +159,13 @@ static int cmd_info(char *args) {
 	}
 	else if(!strcmp(args, "r")) {
 		printf("eax\t0x%x\t%d\n", cpu.eax, cpu.eax);
+		printf("ecx\t0x%x\t%d\n", cpu.ecx, cpu.ecx);
+		printf("edx\t0x%x\t%d\n", cpu.edx, cpu.edx);
+		printf("ebx\t0x%x\t%d\n", cpu.ebx, cpu.ebx);
+		printf("esp\t0x%x\t%d\n", cpu.esp, cpu.esp);
+		printf("ebp\t0x%x\t%d\n", cpu.ebp, cpu.ebp);
+		printf("esi\t0x%x\t%d\n", cpu.esi, cpu.esi);
+		printf("edi\t0x%x\t%d\n", cpu.edi, cpu.edi);
 	}
 	else if(!strcmp(args, "w")) {
 

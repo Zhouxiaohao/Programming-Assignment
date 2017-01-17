@@ -197,6 +197,7 @@ static int cmd_x(char *args) {
 
 		uint32_t addr = 0;
 		sscanf(arg_2, "0x%x", &addr);
+		printf("%d\n", addr);
 
 		int i;
 		for(i = 0;i < n;i ++) {
@@ -206,6 +207,7 @@ static int cmd_x(char *args) {
 			printf("0x%x\t", value);
 			if(i % 4 == 3) printf("\n");
 		}
+		if(n % 4 != 0) printf("\n");
 	}
 
 	return 0;

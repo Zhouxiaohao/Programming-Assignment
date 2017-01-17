@@ -36,26 +36,12 @@ static int cmd_q(char *args) {
 	return -1;
 }
 
-static int cmd_si(char *args) {
-	if(args == NULL) {
-		cpu_exec(1);
-	}
-	else {
-		int steps = -1;
-		sscanf(args, "%d", &steps);
-		if(steps < 0 || !strtok(NULL, " ")) {
-			printf("Wrong command 'si' format: si %s\n", args);
-			printf("Right command 'si' format: 'si' or 'si + [N]'\n");
-		}
-		else {
-			cpu_exec(steps);
-		}
-	}
-
-	return 0;
-}
-
 static int cmd_help(char *args);
+
+/*****************By*ZhouHao**********************/                   
+/****************The begining*********************/
+static int cmd_si(char* args);
+/****************The Ending***********************/ 
 
 static struct {
 	char *name;
@@ -129,3 +115,37 @@ void ui_mainloop() {
 		if(i == NR_CMD) { printf("Unknown command '%s'\n", cmd); }
 	}
 }
+
+/*****************By*ZhouHao**********************/
+/****************The begining*********************/
+
+static int string_to_uint(char *str)
+{
+	int i;
+	int res = 0;
+	int len = strlen(str);
+	for(i = 0;i < len;i ++) {
+		if(str[i] < '0' || str[i] > '9') return -1;
+		else res = res*10 + (str[i] - '0');
+	}
+	return res;
+}
+
+static int cmd_si(char *args) {
+	if(args == NULL) {
+		cpu_exec(1);
+	}
+	else {
+		int steps = string_to_uint(args);
+		if(steps < 0 || !strtok(NULL, " ")) {
+			printf("Wrong command 'si' format: si %s\n", args);
+			printf("Right command 'si' format: 'si' or 'si + [N]'\n");
+		}
+		else {
+			cpu_exec(steps);
+		}
+	} 
+	
+	return 0;
+}
+/****************The Ending***********************/ 

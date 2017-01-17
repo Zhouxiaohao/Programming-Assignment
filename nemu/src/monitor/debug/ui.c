@@ -142,7 +142,7 @@ static int cmd_si(char *args) {
 	else {
 		int steps = string_to_uint(args);
 //		printf("steps = %d\n", steps);
-		if(steps < 0 || !strtok(NULL, " ")) {
+		if(steps < 0 || !strtok(NULL, " ") || strtok(NULL, " ")) {
 			printf("Wrong command 'si' format: si %s\n", args);
 			printf("Right command 'si' format: 'si' or 'si + [N]'\n");
 		}
@@ -155,7 +155,7 @@ static int cmd_si(char *args) {
 }
 
 static int cmd_info(char *args) {
-	if(args == NULL || !strtok(NULL, " ") || (strcmp(args, "r") && strcmp(args, "w"))) {
+	if(args == NULL || !strtok(NULL, " ") || strtok(NULL, " ") || (strcmp(args, "r") && strcmp(args, "w"))) {
 		printf("Wrong command 'info' format\n");
 		printf("Right command 'info' format: 'info r' or 'info w'\n");
 	}
@@ -197,7 +197,6 @@ static int cmd_x(char *args) {
 
 		uint32_t addr = 0;
 		sscanf(arg_2, "0x%x", &addr);
-		printf("arg_2 = %s addr = %d\n", arg_2, addr);
 
 		int i;
 		for(i = 0;i < n;i ++) {

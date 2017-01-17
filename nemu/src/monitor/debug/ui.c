@@ -181,24 +181,38 @@ static int cmd_info(char *args) {
 
 static int cmd_x(char *args) {
 	if(args == NULL) {
-	
+		goto WRONG_COMMAND;
 	}
 	else {
 		char *arg_1 = strtok(NULL, " ");
 		char *arg_2 = strtok(NULL, " ");
 		if(arg_1 == NULL || arg_2 == NULL || !strtok(NULL, " ")) {
+			goto WRONG_COMMAND;
 		}
 
 		int n = string_to_uint(arg_1);
 		if(n < 0) {
+			goto WRONG_COMMAND;
 		}
 
 		uint32_t addr = 0;
 		sscanf(arg_2, "0x%x", &addr);
 
-		
+		int i;
+		for(i = 0;i < n;i ++) {
+			if(i % 4 == 0) printf("0x%x:\t", addr);
+			uint32_t value = swaddr_read(addr, 4);
+			addr += 4;
+			printf("0x%x\t", value);
+			if(i % 4 == 3) printf("\n");
+		}
 	}
 
+	return 0;
+
+WRONG_COMMAND:
+	printf("Wrong command 'x' format\n");
+	printf("Right command 'x' format: 'x [N] Expr'\n");
 	return 0;
 }
 /****************The Ending***********************/ 

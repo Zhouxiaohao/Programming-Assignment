@@ -92,7 +92,10 @@ make_group(group7,
 
 
 /* TODO: Add more instructions!!! */
-
+/*
+ * typedef int (*helper_fun)(swaddr_t);
+ * opcode_table: function pointer variable array
+ */
 helper_fun opcode_table [256] = {
 /* 0x00 */	inv, inv, inv, inv,
 /* 0x04 */	inv, inv, inv, inv,
@@ -229,7 +232,7 @@ helper_fun _2byte_opcode_table [256] = {
 
 make_helper(exec) {
 	ops_decoded.opcode = instr_fetch(eip, 1);
-	printf("ops_decoded.opcode = %x\n", ops_decoded.opcode);
+//	printf("ops_decoded.opcode = %x\n", ops_decoded.opcode);
 	return opcode_table[ ops_decoded.opcode ](eip);
 }
 

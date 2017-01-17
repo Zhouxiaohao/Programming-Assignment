@@ -36,6 +36,25 @@ static int cmd_q(char *args) {
 	return -1;
 }
 
+static int cmd_si(char *args) {
+	if(args == NULL) {
+		cpu_exec(1);
+	}
+	else {
+		int steps = -1;
+		sscanf(args, "%d", &steps);
+		if(steps < 0 || !strtok(NULL, " ")) {
+			printf("Wrong command 'si' format: si %s\n", args);
+			printf("Right command 'si' format: 'si' or 'si + [N]'\n");
+		}
+		else {
+			cpu_exec(steps);
+		}
+	}
+
+	return 0;
+}
+
 static int cmd_help(char *args);
 
 static struct {
@@ -46,6 +65,7 @@ static struct {
 	{ "help", "Display informations about all supported commands", cmd_help },
 	{ "c", "Continue the execution of the program", cmd_c },
 	{ "q", "Exit NEMU", cmd_q },
+	{ "si", "Sinle step debug", cmd_si},
 
 	/* TODO: Add more commands */
 

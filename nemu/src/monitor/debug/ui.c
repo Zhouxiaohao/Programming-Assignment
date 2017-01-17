@@ -197,7 +197,7 @@ static int cmd_x(char *args) {
 
 		uint32_t addr = 0;
 		sscanf(arg_2, "0x%x", &addr);
-		printf("%d\n", addr);
+		printf("arg_2 = %s addr = %d\n", arg_2, addr);
 
 		int i;
 		for(i = 0;i < n;i ++) {

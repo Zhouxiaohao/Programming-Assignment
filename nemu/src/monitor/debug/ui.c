@@ -40,7 +40,8 @@ static int cmd_help(char *args);
 
 /*****************By*ZhouHao**********************/                   
 /****************The begining*********************/
-static int cmd_si(char* args);
+static int cmd_si(char *args);
+static int cmd_info(char *args);
 /****************The Ending***********************/ 
 
 static struct {
@@ -52,6 +53,7 @@ static struct {
 	{ "c", "Continue the execution of the program", cmd_c },
 	{ "q", "Exit NEMU", cmd_q },
 	{ "si", "Sinle step debug", cmd_si},
+	{ "info", "Print program state information", cmd_info},
 
 	/* TODO: Add more commands */
 
@@ -147,6 +149,24 @@ static int cmd_si(char *args) {
 		}
 	} 
 	
+	return 0;
+}
+
+static int cmd_info(char *args) {
+	if(args == NULL || !strtok(NULL, " ") || strcmp(args, "r") || strcmp(args, "w")) {
+		printf("Wrong command 'info' format\n");
+		printf("Right command 'info' format: 'info r' or 'info w'\n");
+	}
+	else if(!strcmp(args, "r")) {
+		
+	}
+	else if(!strcmp(args, "w")) {
+
+	}
+	else {
+		/*Impossible*/
+	}
+
 	return 0;
 }
 /****************The Ending***********************/ 

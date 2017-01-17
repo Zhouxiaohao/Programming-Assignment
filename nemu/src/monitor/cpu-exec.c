@@ -55,9 +55,7 @@ void cpu_exec(volatile uint32_t n) {
 			/* Output some dots while executing the program. */
 			fputc('.', stderr);
 		}
-		printf("hit DEBUG\n");
 #endif
-		printf("hit release\n");
 
 		/* Execute one instruction, including instruction fetch,
 		 * instruction decode, and the actual execution. */

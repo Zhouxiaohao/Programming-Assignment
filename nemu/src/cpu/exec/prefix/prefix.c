@@ -1,5 +1,9 @@
 #include "cpu/exec/helper.h"
 
+/*
+ * see nemu/include/cpu/help.h
+ * #define make_helper(name) int name(swaddr_t eip)
+ */
 make_helper(exec);
 
 make_helper(operand_size) {

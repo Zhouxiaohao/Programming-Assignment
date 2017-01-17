@@ -186,7 +186,7 @@ static int cmd_x(char *args) {
 	else {
 		char *arg_1 = strtok(NULL, " ");
 		char *arg_2 = strtok(NULL, " ");
-		if(arg_1 == NULL || arg_2 == NULL || !strtok(NULL, " ")) {
+		if(arg_1 == NULL || arg_2 == NULL || strtok(NULL, " ")) {
 			goto WRONG_COMMAND;
 		}
 

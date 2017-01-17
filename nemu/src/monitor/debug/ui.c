@@ -158,7 +158,6 @@ static int cmd_info(char *args) {
 		printf("Right command 'info' format: 'info r' or 'info w'\n");
 	}
 	else if(!strcmp(args, "r")) {
-		printf("Register Hexadecimal Decimal\n");
 		printf("eax\t0x%x\t%d\n", cpu.eax, cpu.eax);
 	}
 	else if(!strcmp(args, "w")) {
